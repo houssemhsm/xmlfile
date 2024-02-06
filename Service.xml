@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddPreProspection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tempDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempEMail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempTel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField6" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField7" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField8" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField9" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tempField10" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPreProspectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddPreProspectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticlesAvailability">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticlesAvailabilityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticlesAvailabilityResult" type="tns:ServiceResponseOfListOfStkItemWebActiveItemItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseOfListOfStkItemWebActiveItemItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:ArrayOfStkItemWebActiveItemItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStkItemWebActiveItemItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StkItemWebActiveItemItem" nillable="true" type="tns:StkItemWebActiveItemItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StkItemWebActiveItemItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractItem">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAvailable" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AbstractItem" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractBasicItem">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LockEntity" type="tns:AdmWebLockEntity" />
+              <s:element minOccurs="0" maxOccurs="1" name="LockEntityName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Islocked" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AbstractBasicItem" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PKey" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="HistoryParentObjectType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HistoryParentObjectId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataObjectState" type="tns:EntityState" />
+          <s:element minOccurs="1" maxOccurs="1" name="StrEntityId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Label" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EntityState">
+        <s:list>
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Detached" />
+              <s:enumeration value="Unchanged" />
+              <s:enumeration value="Added" />
+              <s:enumeration value="Deleted" />
+              <s:enumeration value="Modified" />
+            </s:restriction>
+          </s:simpleType>
+        </s:list>
+      </s:simpleType>
+      <s:complexType name="AdmWebLockEntity">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LockDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Session" type="tns:AdmWebSession" />
+              <s:element minOccurs="1" maxOccurs="1" name="SessionId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="DataObjectId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="State" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DataObject" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataObjectState" type="tns:EntityState" />
+          <s:element minOccurs="0" maxOccurs="1" name="HistoryParentObjectType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HistoryParentObjectId" nillable="true" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdmWebRight">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NodeKey" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="Role" type="tns:AdmRole" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmRole">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithAddActionMessageRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithEditActionMessageRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithDeleteActionMessageRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithAddAttachementRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithEditAttachementRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WithDeleteAttachementRestriction" nillable="true" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Rights" type="tns:ArrayOfAdmWebRight" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DataObjectWithHistory" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserCreate" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserCreateDateTime" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserUpdate" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserUpdateDateTime" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmIdentityDocumentType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmMatrimonialRegime">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmResidenceType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmFamilySituation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmLiability">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsExonarated" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsMajorated" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="MajorationValue" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmSocialForm">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsPerson" nillable="true" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmNationality">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmProfession">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsWithSalary" nillable="true" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmSalary">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmSexType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmTierTitle">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmSexTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmSexType" type="tns:AdmSexType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CfgTierKind">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgTierTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgTierType" type="tns:CfgTierType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CfgTierType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Sorting" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgTier" type="tns:ArrayOfCfgTier" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgTierKind" type="tns:ArrayOfCfgTierKind" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCfgTier">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CfgTier" nillable="true" type="tns:CfgTier" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CfgTier">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ICE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MobileIndicatif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhoneIndicatif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone1Indicatif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone2Indicatif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FaxIndicatif" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EMail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebSite" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SocialReason" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BankAgency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Rib" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Iban" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FiscalCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FiscalRegistry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FiscalDouane" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BirthPlace" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BirthDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="NbrChildren" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Asset" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="Quality" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IDDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IDPlace" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IDValidateDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IDValidatePlace" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsProspect" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsExtern" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsVisibleInList" nillable="true" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="CodeCountable" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CodeCountableCollective" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FatherName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MotherName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Employer" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Antiquity" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmCountryId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmCountry" type="tns:AdmCountry" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmCityId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmCity" type="tns:AdmCity" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmCountryResidenceId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmCountryResidence" type="tns:AdmCountry" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgTierTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgTierType" type="tns:CfgTierType" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgTierKindId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgTierKind" type="tns:CfgTierKind" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmTierTitleId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmTierTitle" type="tns:AdmTierTitle" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgBankId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgBank" type="tns:CfgTier" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgContactId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgContact" type="tns:CfgTier" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgCommercialId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgCommercial" type="tns:CfgTier" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmSalaryId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmSalary" type="tns:AdmSalary" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmProfessionId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmProfession" type="tns:AdmProfession" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmNationalityId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmNationality" type="tns:AdmNationality" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmSocialFormId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmSocialForm" type="tns:AdmSocialForm" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmLiabilityId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmLiability" type="tns:AdmLiability" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmFamilySituationId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmFamilySituation" type="tns:AdmFamilySituation" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmResidenceTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmResidenceType" type="tns:AdmResidenceType" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmMatrimonialRegimeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmMatrimonialRegime" type="tns:AdmMatrimonialRegime" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmIdentityDocumentTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmIdentityDocumentType" type="tns:AdmIdentityDocumentType" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmSexTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmSexType" type="tns:AdmSexType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmCountry">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ISOAlpha3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description_an" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ISOName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NationCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhoneCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhoneFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebPhoneFormat" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmCity">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AdmCountryId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdmCountry" type="tns:AdmCountry" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCfgTierKind">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CfgTierKind" nillable="true" type="tns:CfgTierKind" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdmWebAlertDefinition">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmWebLanguage">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmWebCulture">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateExtjsShortFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateExtjsLongFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateExtjsAltFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateShortFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateLongFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateSeparator" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="NumberNegativeFormat" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="NumberGrouping" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="NumberDecimalCount" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="NumberGroupingSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NumberDecimalSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NumberNegativeSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NumberPosifiveSymbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentageNegativeFormat" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentagePositiveFormat" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentageGroupingNumber" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentageNumberofDecimal" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="PercentageSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PercentageNumberGroupingSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PercentageDecimalSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PercentageThousandSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeExtjsFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeShortFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeLongFormat" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeSeparator" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeMorningSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeEveningSymbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DeviceNegativeFormat" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DevicePositiveFormat" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DeviseGrouping" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DeviseDecimalCount" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeviseGroupingSymbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeviseDecimalSymbol" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LanguageId" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="Language" type="tns:AdmWebLanguage" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AdmUser">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObjectWithHistory">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LinesPerPage" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ConfirmDelete" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="LockDelay" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Disabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsVisibleForChat" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="CanDisapearNotification" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="WebRoleId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebRole" type="tns:AdmRole" />
+              <s:element minOccurs="1" maxOccurs="1" name="WebCultureId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebCulture" type="tns:AdmWebCulture" />
+              <s:element minOccurs="1" maxOccurs="1" name="WebAlertDefinitionId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebAlertDefinition" type="tns:AdmWebAlertDefinition" />
+              <s:element minOccurs="1" maxOccurs="1" name="CfgEmployeeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="CfgEmployee" type="tns:CfgTier" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAdmWebRight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AdmWebRight" nillable="true" type="tns:AdmWebRight" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdmWebSession">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DataObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SystemVersion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebSession" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:AdmUser" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="State" type="tns:SessionState" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="SessionState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Opened" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="Locked" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetArticles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticlesResult" type="tns:ServiceResponseOfListOfStkItemWebItemItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseOfListOfStkItemWebItemItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:ArrayOfStkItemWebItemItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStkItemWebItemItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StkItemWebItemItem" nillable="true" type="tns:StkItemWebItemItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StkItemWebItemItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AbstractItem">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAvailable" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Area" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ComSaleUnitCostHT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="SalePriceUnderFloor" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="ComSaleUnitCost" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="ComSaleMinAdvance" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="ComSalePrice" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="SalePrice" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="Contenance" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AreaNet" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="AreaFloor" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkItemTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkItemType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkItemTypeDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkItemCategoryId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkItemCategory" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkItemCategoryDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkKindId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkKindDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkBuildingId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkFloorId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkFloorLabel" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkFloorSorting" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkOrientationId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkOrientationLabel" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StkPresentationTypeId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkPresentationType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StkPresentationTypeDescription" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetArticleById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="articleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticleByIdResult" type="tns:ServiceResponseOfStkItemWebItemItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseOfStkItemWebItemItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:StkItemWebItemItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetArticleByCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticleByCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArticleByCodeResult" type="tns:ServiceResponseOfStkItemWebItemItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddPreProspectionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPreProspection" />
+  </wsdl:message>
+  <wsdl:message name="AddPreProspectionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPreProspectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesAvailabilitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticlesAvailability" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesAvailabilitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticlesAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticles" />
+  </wsdl:message>
+  <wsdl:message name="GetArticlesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticleById" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleByCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArticleByCode" />
+  </wsdl:message>
+  <wsdl:message name="GetArticleByCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArticleByCodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="AddPreProspection">
+      <wsdl:input message="tns:AddPreProspectionSoapIn" />
+      <wsdl:output message="tns:AddPreProspectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesAvailability">
+      <wsdl:input message="tns:GetArticlesAvailabilitySoapIn" />
+      <wsdl:output message="tns:GetArticlesAvailabilitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticles">
+      <wsdl:input message="tns:GetArticlesSoapIn" />
+      <wsdl:output message="tns:GetArticlesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleById">
+      <wsdl:input message="tns:GetArticleByIdSoapIn" />
+      <wsdl:output message="tns:GetArticleByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleByCode">
+      <wsdl:input message="tns:GetArticleByCodeSoapIn" />
+      <wsdl:output message="tns:GetArticleByCodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPreProspection">
+      <soap:operation soapAction="http://tempuri.org/AddPreProspection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesAvailability">
+      <soap:operation soapAction="http://tempuri.org/GetArticlesAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticles">
+      <soap:operation soapAction="http://tempuri.org/GetArticles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleById">
+      <soap:operation soapAction="http://tempuri.org/GetArticleById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleByCode">
+      <soap:operation soapAction="http://tempuri.org/GetArticleByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPreProspection">
+      <soap12:operation soapAction="http://tempuri.org/AddPreProspection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticlesAvailability">
+      <soap12:operation soapAction="http://tempuri.org/GetArticlesAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticles">
+      <soap12:operation soapAction="http://tempuri.org/GetArticles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleById">
+      <soap12:operation soapAction="http://tempuri.org/GetArticleById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleByCode">
+      <soap12:operation soapAction="http://tempuri.org/GetArticleByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://41.231.5.127/ROL_4.5.58.0/Modules/Com/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://41.231.5.127/ROL_4.5.58.0/Modules/Com/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
